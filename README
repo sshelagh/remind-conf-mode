@@ -1,0 +1,9 @@
+Remind-conf-mode is a configuration mode designed to make it a little easier to configure remind using emacs.
+
+Just copy it to your elist folder (whatever it is called) make sure it is in your path so emacs know where to look for it, put (require 'remind-conf-mode) in your dotemacs file.
+
+There are some more complex instructions in the file itself.
+
+Have fun and if you can think of any improvements let me know, or fork it to your own git repository and experiment away.
+
+Shelagh
