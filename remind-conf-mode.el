@@ -151,7 +151,7 @@ This is so that those who want to can use time words in their own language."
 	 "November" "December" "Mon" "Monday" "Tue" "Tues" "Tuesday" "Wed" "Wednesday"
 	 "Thu" "Thursday" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday"))
  ("FR" (list "janvier" "fevrier" "mars" "avril" "mai" "juillet" "juin" "aout" "septembre" "novembre"
-	     "decembre" "lundi" "mardi" "mercredi" "jeudi" "vendredi" "dimanche"))
+	     "decembre" "lundi" "mardi" "mercredi" "jeudi" "vendredi" "samedi" "dimanche"))
  ("IT" (list "gennaio" "febbraio" "marzo" "aprile" "maggio" "giugno" "luglio" "agosto" "settembre"
 	     "ottobre" "novembre" "dicembre" "lunedi" "martedi" "mercoledi" "giovedi" "veneredi" "sabato" "domenica"))))
 
