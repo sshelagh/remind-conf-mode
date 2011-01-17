@@ -1,6 +1,6 @@
 ;;; remind-conf-mode.el --- A mode to help configure remind.
 
-;; Copyright (C) 2008, 2009, 2010  Shelagh Manton <shelagh.manton@gmail.com>
+;; Copyright (C) 2008-2011  Shelagh Manton <shelagh.manton@gmail.com>
 
 ;; Author: Shelagh Manton <shelagh.manton@gmail.com> with help from
 ;; David F. Skoll
@@ -46,6 +46,9 @@
 ;;   other words in buffer auto-complete too
 
 ;;; History:
+;; Mon, Jan 17, 2011
+;; added some faux-locale functionality where time words can be localized to someone's country.
+;; 
 ;;Thu, Nov 26, 2009 
 ;; sorted out why the rem-save-file was not working. fixed. 
 ;;
@@ -69,9 +72,17 @@
 
 (defgroup remind-conf nil
   "Options for remind-conf-mode."
-  :group 'remind-conf
+  :group 'utilities
+  :group 'languages
   :prefix "remind-conf-")
 
+(defcustom remind-locale "EN"
+"The code for setting the language for time words.
+
+This is so that those who want to can use time words in their own language."
+:group remind-conf
+:type 'string
+)
 
 (defvar remind-conf-mode-hook nil
   "Hook to run in `remind-conf-mode'.")
@@ -134,12 +145,18 @@
 	 "$Tm" "$Tw" "$Ty" "$TimeSep" "$UntimedFirst" "$U" "$Ud" "$Um" "$Uw" "$Uy")
    #'(lambda (a b) (> (length a) (length b)))))
 
-(defconst remind-time-words
-  (sort
-   (list "Jan" "January" "Feb" "Mar" "Apr" "Jun" "Jul" "Aug" "Sept" "Sep" "Oct" "Nov" "Dec"
+(defconst remind-timewords-alist
+'(("EN" (list "Jan" "January" "Feb" "Mar" "Apr" "Jun" "Jul" "Aug" "Sept" "Sep" "Oct" "Nov" "Dec"
 	 "February" "March" "April" "May" "June" "July" "August" "September" "October"
 	 "November" "December" "Mon" "Monday" "Tue" "Tues" "Tuesday" "Wed" "Wednesday"
-	 "Thu" "Thursday" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday")
+	 "Thu" "Thursday" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday"))
+ ("FR" (list "janvier" "fevrier" "mars" "avril" "mai" "juillet" "juin" "aout" "septembre" "novembre"
+	     "decembre" "lundi" "mardi" "mercredi" "jeudi" "vendredi" "dimanche"))
+ ("IT" (list "gennaio" "febbraio" "marzo" "aprile" "maggio" "giugno" "luglio" "agosto" "settembre"
+	     "ottobre" "novembre" "dicembre" "lunedi" "martedi" "mercoledi" "giovedi" "veneredi" "sabato" "domenica"))))
+
+(defconst remind-time-words
+  (sort (cdr (assoc rem-locale remind-timewords-alist))   
    #'(lambda (a b) (> (length a) (length b)))))
 
 (defconst remind-builtin-functions
