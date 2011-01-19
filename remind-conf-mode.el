@@ -41,10 +41,18 @@
 ;;    (setq ac-sources '(ac-remind-conf ac-remind-builtin-variables ac-remind-builtin-functions))
 ;;    (auto-complete t)))
 ;;   in your .emacs file
+;;   This version of remind-conf-mode is only useful for remind versions later than ????
+;;   as it is only in these versions that remind recognises other languages. 
 
 ;;   PS.  you could add ac-source-abbrev ac-source-words-in-buffer to have abbrevs and
 ;;   other words in buffer auto-complete too
-
+;;
+;; WARNING: This version of remind-conf-mode is only useful for remind versions that have
+;; been compiled with the locale stuff.  You take the risk of your remind files not being
+;; portable if you write them in your local language. English is available with every
+;; remind. 
+;; 
+;;
 ;;; History:
 ;; Mon, Jan 17, 2011
 ;; added some faux-locale functionality where time words can be localized to someone's country.
@@ -79,7 +87,11 @@
 (defcustom remind-locale "EN"
 "The code for setting the language for time words.
 
-This is so that those who want to can use time words in their own language."
+This is so that those who want to can use time words in their own
+language.  But it is only useful for a remind that has been
+compiled with locale stuff. Be warned that if you do write your
+remind files in your own language, if you try to use them with a
+remind that has not been compiled with your language, the file will not work."
 :group remind-conf
 :type 'string
 )
@@ -147,13 +159,19 @@ This is so that those who want to can use time words in their own language."
 
 (defconst remind-timewords-alist
 '(("EN" (list "Jan" "January" "Feb" "Mar" "Apr" "Jun" "Jul" "Aug" "Sept" "Sep" "Oct" "Nov" "Dec"
-	 "February" "March" "April" "May" "June" "July" "August" "September" "October"
-	 "November" "December" "Mon" "Monday" "Tue" "Tues" "Tuesday" "Wed" "Wednesday"
-	 "Thu" "Thursday" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday"))
+	      "February" "March" "April" "May" "June" "July" "August" "September" "October"
+	      "November" "December" "Mon" "Monday" "Tue" "Tues" "Tuesday" "Wed" "Wednesday"
+	      "Thu" "Thursday" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday"))
  ("FR" (list "janvier" "fevrier" "mars" "avril" "mai" "juillet" "juin" "aout" "septembre" "novembre"
 	     "decembre" "lundi" "mardi" "mercredi" "jeudi" "vendredi" "samedi" "dimanche"))
  ("IT" (list "gennaio" "febbraio" "marzo" "aprile" "maggio" "giugno" "luglio" "agosto" "settembre"
-	     "ottobre" "novembre" "dicembre" "lunedi" "martedi" "mercoledi" "giovedi" "veneredi" "sabato" "domenica"))))
+	     "ottobre" "novembre" "dicembre" "lunedi" "martedi" "mercoledi" "giovedi" "veneredi"
+	     "sabato" "domenica"))
+ ("DE" (list "Sonntag" "Montag" "Dienstag" "Mittwoch" "Donnerstag" "Freitag" "Samstag" "Januar"
+	     "Februar" "März" "Maerz" "April" "Mai" "Juni" "Juli" "August" "September" "Oktober"
+	     "November" "Dezember"))
+
+;; The short forms are made up of the first letters of each name.
 
 (defconst remind-time-words
   (sort (cdr (assoc rem-locale remind-timewords-alist))   
