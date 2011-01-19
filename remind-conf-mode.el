@@ -1,6 +1,6 @@
 ;;; remind-conf-mode.el --- A mode to help configure remind.
 
-;; Copyright (C) 2008, 2009, 2010  Shelagh Manton <shelagh.manton@gmail.com>
+;; Copyright (C) 2008 - 2011  Shelagh Manton <shelagh.manton@gmail.com>
 
 ;; Author: Shelagh Manton <shelagh.manton@gmail.com> with help from
 ;; David F. Skoll
@@ -481,6 +481,3 @@ Acts on the region or places point where it needs to be."
 
 ;;;  work out how to make the syntax highlighting work only before the
 ;;; (MSG|MSF) keywords and not after.
-
-
-;;; Should also set up keyword defconst to do more than one thing. 
