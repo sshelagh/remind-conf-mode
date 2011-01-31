@@ -119,6 +119,8 @@
 	 "EXIT" "FLUSH" "PRESERVE" "MOON" "COLOR" "UNSET")
    #'(lambda (a b) (> (length a) (length b)))))
 
+
+
 (defconst remind-type-keywords
   (sort
    (list "INT" "STRING" "TIME" "DATE" "SHADE" "DATETIME")
@@ -134,13 +136,15 @@
 	 "$Tm" "$Tw" "$Ty" "$TimeSep" "$UntimedFirst" "$U" "$Ud" "$Um" "$Uw" "$Uy")
    #'(lambda (a b) (> (length a) (length b)))))
 
+
 (defconst remind-time-words
   (sort
    (list "Jan" "January" "Feb" "Mar" "Apr" "Jun" "Jul" "Aug" "Sept" "Sep" "Oct" "Nov" "Dec"
 	 "February" "March" "April" "May" "June" "July" "August" "September" "October"
 	 "November" "December" "Mon" "Monday" "Tue" "Tues" "Tuesday" "Wed" "Wednesday"
-	 "Thu" "Thursday" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday")
+	 "Thu" "Thursday" "Thurs" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday")
    #'(lambda (a b) (> (length a) (length b)))))
+
 
 (defconst remind-builtin-functions
   (sort
