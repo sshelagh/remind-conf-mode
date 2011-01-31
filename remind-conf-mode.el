@@ -120,7 +120,6 @@
    #'(lambda (a b) (> (length a) (length b)))))
 
 
-
 (defconst remind-type-keywords
   (sort
    (list "INT" "STRING" "TIME" "DATE" "SHADE" "DATETIME")
