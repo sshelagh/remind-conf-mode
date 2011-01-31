@@ -50,12 +50,12 @@
 ;; WARNING: This version of remind-conf-mode is only useful for remind versions that have
 ;; been compiled with the locale stuff.  You take the risk of your remind files not being
 ;; portable if you write them in your local language. English is available with every
-;; remind. 
+;; remind. This mode does not respect the fully localised set of words yet, only the time words. 
 ;; 
 ;;
 ;;; History:
 ;; Mon, Jan 17, 2011
-;; added some faux-locale functionality where time words can be localized to someone's country.
+;; added some faux-locale functionality where time words can be highlighted to selected languages.
 ;; 
 ;;Thu, Nov 26, 2009 
 ;; sorted out why the rem-save-file was not working. fixed. 
@@ -88,10 +88,11 @@
 "The code for setting the language for time words.
 
 This is so that those who want to can use time words in their own
-language.  But it is only useful for a remind that has been
-compiled with locale stuff. Be warned that if you do write your
-remind files in your own language, if you try to use them with a
-remind that has not been compiled with your language, the file will not work."
+language and have them highlighted correctly.  But it is only
+useful for a remind that has been compiled with locale. Be
+warned that if you do write your remind files in your own
+language, if you try to use them with a remind that has not been
+compiled with locale, the file will not work."
 :group remind-conf
 :type 'string
 )
@@ -161,17 +162,48 @@ remind that has not been compiled with your language, the file will not work."
 '(("EN" (list "Jan" "January" "Feb" "Mar" "Apr" "Jun" "Jul" "Aug" "Sept" "Sep" "Oct" "Nov" "Dec"
 	      "February" "March" "April" "May" "June" "July" "August" "September" "October"
 	      "November" "December" "Mon" "Monday" "Tue" "Tues" "Tuesday" "Wed" "Wednesday"
-	      "Thu" "Thursday" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday"))
- ("FR" (list "janvier" "fevrier" "mars" "avril" "mai" "juillet" "juin" "aout" "septembre" "novembre"
-	     "decembre" "lundi" "mardi" "mercredi" "jeudi" "vendredi" "samedi" "dimanche"))
+	      "Thu" "Thurs" "Thursday" "Fri" "Friday" "Saturday" "Sat" "Sun" "Sunday"))
+ ("FR" (list "janvier" "jan" "fevrier" "fev" "mars" "avril" "avr" "mai" "juillet" "jui" "juin"
+	     "aout" "septembre" "sept" "novembre" "nov" "decembre" "dec" "lundi" "lun" "mardi"
+	     "mar" "mercredi" "merc" "jeudi" "jeu" "vendredi" "ven" "vend" "samedi" "sam" "dimanche" "dim"))
  ("IT" (list "gennaio" "febbraio" "marzo" "aprile" "maggio" "giugno" "luglio" "agosto" "settembre"
 	     "ottobre" "novembre" "dicembre" "lunedi" "martedi" "mercoledi" "giovedi" "veneredi"
 	     "sabato" "domenica"))
- ("DE" (list "Sonntag" "Montag" "Dienstag" "Mittwoch" "Donnerstag" "Freitag" "Samstag" "Januar"
-	     "Februar" "März" "Maerz" "April" "Mai" "Juni" "Juli" "August" "September" "Oktober"
-	     "November" "Dezember"))
+ ("DE" (list "Sonntag" "Son" "Sonn" "Montag" "Mon" "Dienstag" "Die" "Diens" "Mittwoch" "Mitt"
+	     "Donnerstag" "Don" "Donners" "Freitag" "Frie" "Samstag" "Sams" "Januar" "Jan"
+	     "Februar" "Feb" "März" "Maerz" "April" "Apr" "Mai" "Juni" "Juli" "August" "Aug"
+	     "September" "Sep"  "Sept" "Oktober" "Okt" "Nov" "Dec" "November" "Dezember"))
+ ("ES" (list "Domingo" "Dom" "Lunes" "Lun" "Martes" "Mar" "Miercoles" "Mier" "Jueves" "Jue"
+	     "Viernes" "Vier" "Sabado" "Sab" "Enero" "En" "Febrero" "Feb" "Marzo" "Abril" "Abr"
+	     "Mayo" "May" "Junio" "Jun" "Julio" "Jul" "Agosto" "Ag" "Septiembre" "Sept" "Octuber"
+	     "Oct" "Novembre" "Nov" "Diciembre" "Dic"))
+ ("RO" (list "Dumenica" "Dum" "Luni" "Lun" "Marti" "Mar" "Miercuri" "Mier" "Joi" "Vineri" "Vin"
+	     "Sambata" "Sam" "Ianuarie" "Ian" "Februarie" "Feb" "Martie"  "Aprilie" "Apr"  "Mai"
+	     "Iunie" "Iun" "Iul" "Oct" "Aug" "Sept" "Noi" "Dec" "Iulie"  "August"  "Septembrie"
+	     "Octombrie" "Noiembrie" "Decembrie"))
+ ("PT" (list  "domingo" "dom" "segunda" "seg" "terca" "ter" "quarta" "quar" "quinta" "quin" "sexta"
+	      "sex" "sabado" "sab" "janeiro" "jan" "fevereiro" "fev" "marco" "mar" "abril" "abr"
+	      "maio" "mai" "junho" "jun" "julho" "jul" "agosto" "ago" "setembro" "set" "outubro"
+	      "out" "novembro" "nov" "dezembro" "dez"))
+ ("PL" (list  "Niedziela" "Nied" "Poniedzialek" "Poni" "Wtorek" "Wtor" "Sroda"  "Czwartek"
+	      "Srod" "Piatek" "Piat" "Sobota" "Sobo" "Styczen" "Styc" "Luty"  "Marzec" "Marz"
+	      "Kwiecien" "Kwie" "Maj"  "Czerwiec" "Czer" "Lipiec" "Lipi" "Sierpien" "Sier"
+	      "Wrzesien" "Wrze" "Pazdziernik" "Pazd" "Listopad" "List" "Grudzien" "Grud" ))
+ ("NO" (list "Januar" "Jan"  "Februar" "Feb"  "Mars" "April" "Apr" "Mai" "Juni" "Jum"
+	     "Juli" "Jul" "August" "Aug" "September"  "Sep" "Sept" "Oktober" "Okt"  
+	     "November" "Nov" "Desember" "Des" "Mandag" "Man" "Tirsdag" "Tir" "Tirs"  
+	     "Onsdag" "Ons" "Torsdag" "Tor" "Tors" "Fredag"  "Fre" "Soendag"  "Soen" "Loerdag" "Loer" ))
+ ("IS" (list "sunnudagur" "sunn" "mánudagur" "mánu" "þriðjudagur" "þrið" "miðvikudagur" "mið"
+	     "fimmtudagur" "fimm" "föstudagur" "föst" "laugardagur" "laug" "janúar" "janú"
+	     "febrúar" "feb" "mars" "apríl" "apr" "maí" "júní" "jún" "júlí" "ágúst" "júl" "september"
+	     "sept" "október" "okt" "nóvember" "nóv" "desember" "des"))
+ ("FI" (list "sunnuntai" "sunn" "maanantai"  "maan" "tiistai"  "tiis" "keskiviikko"
+	     "kesk" "torstai"  "tors" "perjantai"  "perj" "lauantai"  "lau" "tammikuu"  "tamm"
+	     "helmikuu"  "helm" "maaliskuu"  "maal" "huhtikuu"  "huht" "toukokuu"  "touk"
+	     "elokuu"  "elok" "syyskuu"  "syys" "lokakuu"  "lok" "marraskuu"  "marr" "joulukuu"  "joul"))))
 
-;; The short forms are made up of the first letters of each name.
+
+;; The short forms are made up of the first 3-5 letters of each name.
 
 (defconst remind-time-words
   (sort (cdr (assoc rem-locale remind-timewords-alist))   
