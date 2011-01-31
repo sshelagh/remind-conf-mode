@@ -200,7 +200,15 @@ compiled with locale, the file will not work."
  ("FI" (list "sunnuntai" "sunn" "maanantai"  "maan" "tiistai"  "tiis" "keskiviikko"
 	     "kesk" "torstai"  "tors" "perjantai"  "perj" "lauantai"  "lau" "tammikuu"  "tamm"
 	     "helmikuu"  "helm" "maaliskuu"  "maal" "huhtikuu"  "huht" "toukokuu"  "touk"
-	     "elokuu"  "elok" "syyskuu"  "syys" "lokakuu"  "lok" "marraskuu"  "marr" "joulukuu"  "joul"))))
+	     "elokuu"  "elok" "syyskuu"  "syys" "lokakuu"  "lok" "marraskuu"  "marr" "joulukuu"  "joul"))
+ ("DK" (list "Soendag" "Soen"  "Mandag"  "Man"  "Tirsdag"  "Tirs"  "Onsdag"  "Ons"  "Torsdag"  "Tors"
+	     "Fredag"  "Fre"  "Loerdag"  "Loer"  "Januar"  "Jan"  "Februar"  "Feb"  "Marts"  "Mar"
+	     "April"  "Apr"  "Maj" "Juni"  "Junj"  "Juli"  "Jul"  "August"  "Aug"  "September"  "Sep"
+	     "Oktober"  "Okt"  "November"  "Nov"  "December"  "Dec"))
+ ("AN" (list "zondag" "zon"  "maandag"  "man"  "dinsdag" "din" "dins" "woensdag" "woe"  "donderdag" "don" "dond"
+	     "vrijdag" "vrij"  "zaterdag" "zat"  "januari" "jan"  "februari" "feb"  "maart" "maa"
+	     "april" "apr"  "mei" "juni" "jun"  "juli" "jul"  "augustus" "aug"  "september" "sep" "sept"
+	     "oktober" "okt"  "november" "nov"  "december" "dec")) ))
 
 
 ;; The short forms are made up of the first 3-5 letters of each name.
