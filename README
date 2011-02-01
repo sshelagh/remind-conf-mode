@@ -1,6 +1,8 @@
 Remind-conf-mode is a configuration mode designed to make it a little easier to configure remind using emacs.
 
-Just copy it to your elist folder (whatever it is called) make sure it is in your path so emacs know where to look for it, put (require 'remind-conf-mode) in your dotemacs file.
+It offers a vibrant colour syntax highlighting for those who like lots of colour, simple indentation and some hopefully useful functions for entering times and dates. Those functions have been exposed in a special menu for remind for those who have not turned off the emacs menu system.
+
+Just copy remind-conf-mode.el to your elisp folder (whatever it is called) make sure it is in your path so emacs know where to look for it, and put (require 'remind-conf-mode) in your dotemacs file.
 
 There are some more complex instructions in the file itself.
 
