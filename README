@@ -8,4 +8,6 @@ There are some more complex instructions in the file itself.
 
 Have fun and if you can think of any improvements let me know, or fork it to your own git repository and experiment away.
 
+The faux-locale branch has code for choosing the language you use remind in. Please try it out and let me know if there are any problems with it.
+
 Shelagh
